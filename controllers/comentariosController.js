@@ -43,9 +43,19 @@ const comentariosController = {
 
         return response.json(comentarioDeletado);
         
+    },
+
+    show: async(request, response) => {
+        const { id } = request.params;
+
+        const comentariosPost = await Comentario.findAll({
+            where: {
+                posts_id: id
+            }
+        });
+
+        return response.json(comentariosPost);
     }
-
-
 
 }
 

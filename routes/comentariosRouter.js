@@ -3,6 +3,7 @@ const router = express.Router();
 const comentariosController = require('../controllers/comentariosController');
 
 router.get('/', comentariosController.index);
+router.get('/:id', comentariosController.show);
 router.post('/', comentariosController.create);
 router.put('/:id', comentariosController.update);
 router.delete('/:id', comentariosController.delete);

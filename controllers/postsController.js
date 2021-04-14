@@ -43,6 +43,18 @@ const postsController = {
 
         return response.json(postDeletado);
         
+    },
+
+    show: async(request, response) => {
+        const { id } = request.params;
+
+        const postsUsuario = await Post.findAll({
+            where: {
+                usuarios_id: id
+            }
+        });
+
+        return response.json(postsUsuario);
     }
 
 }
