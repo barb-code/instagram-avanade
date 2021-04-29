@@ -8,12 +8,21 @@ var indexRouter = require('./routes/index');
 var usuariosRouter = require('./routes/usuariosRouter');
 var postsRouter = require('./routes/postsRouter');
 var comentariosRouter = require('./routes/comentariosRouter');
+const session = require('express-session');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+app.use(session({ 
+
+  secret : "instagram-avanade ",
+  saveUninitialized: true,
+  resave: true
+  
+}));
 
 app.use(logger('dev'));
 app.use(express.json());

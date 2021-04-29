@@ -1,5 +1,6 @@
 const { request, response } = require('express');
 const { Usuario, sequelize } = require('../models/');
+const bcrypt = require('bcryptjs');
 
 const usuariosController = {
     index: async (request, response) => {
@@ -8,15 +9,41 @@ const usuariosController = {
         return response.render('usuarios', { listaUsuarios: usuarios});
     },
 
+    registro: (request, response) =>{
+        return response.render('registro'); 
+    },
+
+    login: (request, response) =>{
+        return response.render('login')
+    },
+
+    auth: async (request, response) => {
+        const { email, senha } = request.body;
+
+        const usuario = await Usuario.findOne({
+            where:{ email }
+        });
+
+        if (usuario && bcrypt.compareSync(senha, usuario.senha)) {
+            request.session.usuarioLogado = usuario;
+            return response.redirect('/');
+
+        }else{
+            return response.redirect('usuarios/login');
+        }
+    },
+
     create: async (request, response) => {
         let {nome, email, senha} = request.body;
+
+        let senhaCrypt = bcrypt.hashSync(senha, 10);
 
         let novoUsuario = await Usuario.create({
             nome,
             email,
-            senha
+            senha: senhaCrypt
         });
-
+       
         return response.json(novoUsuario);
     },
     update: async (request, response) => {

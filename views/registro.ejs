@@ -1,29 +1,35 @@
+  
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>registro</title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
     <main>
+       
         <div class="banner">
-            <img src="img/banner-login.png" alt="Smartphones com demonstração do instagram">
+            <img src="/img/banner-login.png" alt="Smartphones com demonstração do instagram">
         </div>
         <div class="cadastro">
-            <img src="img/logo.png" alt="logo" class="logo">
-            <form>
-                <input type="name" name="nome" placeholder="Digite seu nome">
+
+            <img src="/img/logo.png" alt="logo" class="logo">
+            <form action="/usuarios" method="POST" >
+                <input type="nome" name="nome" placeholder="Digite seu nome">
                 <input type="email" name="email" id="email" placeholder="Digite seu email">
                 <input type="password" name="senha" id="senha" placeholder="Digite sua senha">
-                <input type="password" name="senha" id="senha" placeholder="Confirme sua senha">
-                <button type="submit">Cadastre-se</button>
-                <p style="font-family: Arial,sans-serif; font-display: center; font-size: 13px;">Ao se cadastrar, você concorda com nossos <strong>Termos</strong>, <strong>Politicas de Dados</strong> e <strong>Politicas de Cookies</strong></p>
+                <input type="password" name="confirmasenha" id="confirmasenha" placeholder="Confirme sua senha">
+                <button type="submit" href="views\login.ejs" >Cadastre-se</button>
+                
+                <p style="font-family: Arial,sans-serif; font-display: center; font-size: 13px;">Ao se cadastrar, 
+                    você concorda com nossos <strong>Termos</strong>, <strong>Politicas de Dados</strong> e <strong>Politicas de Cookies</strong></p>
             </form>
+
             <div class="cta-login">
-                <p>Já tem uma conta? <a href="login.html"style="text-decoration: none; color: rgba(var(--d69,0,149,246),1)">Conecte-se</a></p>
+                <p>Já tem uma conta? <a href="views\login.ejs"style="text-decoration: none; color: rgba(var(--d69,0,149,246),1)">Conecte-se</a></p>
             </div>
         </div>
     </main>

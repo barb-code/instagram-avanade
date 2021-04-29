@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instagram</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
@@ -14,7 +14,7 @@
         <img src="img/logo.png" alt="Instagram" class="logo">
     </header>
     <main>
-        <%= JSON.stringify(listaPosts); %> 
+      
         <% for (let post of listaPosts) { %>
         <article>
             <div class="post-header">
@@ -35,17 +35,13 @@
                     </div>
                     <strong class="data">Postado no dia: 16/04/2020</strong>
                 </div>
-                <ol>
-                    <li>
-                        <p>Deu até fome!</p>
-                    </li>
-                    <li>
-                        <p>Uhh adorei</p>
-                    </li>
-                    <li>
-                        <p>Prefiro feijoada!</p>
-                    </li>
-                </ol>
+                <% for(let comentario of post.comentarios){ %> 
+                    <ol>
+                        <li>
+                            <p><%= comentario.texto %> </p>
+                        </li>
+                    </ol>
+                    <% } %>
             </div>
         </article>
         <% } %>

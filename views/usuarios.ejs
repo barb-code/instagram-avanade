@@ -11,7 +11,10 @@
     <% for( let usuario of listaUsuarios) { %>
        
         <li>
-            <%= usuario.nome %>
+         <strong>id:   <%= usuario.id %> <br /> </strong>
+           nome: <%= usuario.nome %> <br />
+           email: <%= usuario.email %> <br />
+           senha: <%= usuario.senha %> <br />
         </li>
          
     <% } %>
